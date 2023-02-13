@@ -60,12 +60,12 @@ export module WatermarkingTools {
 
 		// If not found, return an empty string
 		if (index == -1) {
-			console.warn("Trying to get the code of a space that is not in the table")
+			console.warn("Trying to get the code of a space that is not in the table");
 			return "";
 		}
-		
+
 		// Convert the index to binary
-		let binary = index.toString(2).padStart(3, '0');
+		let binary = index.toString(2).padStart(3, "0");
 
 		return binary;
 	}
@@ -76,10 +76,10 @@ export module WatermarkingTools {
 
 		// If not found, return an empty string
 		if (index == -1) {
-			console.warn("Trying to get the space from a code that is not in the table")
+			console.warn("Trying to get the space from a code that is not in the table");
 			return "";
 		}
-		
+
 		return TableSpaces[index];
 	}
 
@@ -93,10 +93,10 @@ export module WatermarkingTools {
 
 		// If not found, return an empty string
 		if (index == -1) {
-			console.warn("Trying to apply homoglyph to a character that is not in the original set")
+			console.warn("Trying to apply homoglyph to a character that is not in the original set");
 			return "";
 		}
-		
+
 		return charSet[index];
 	}
 
@@ -149,29 +149,29 @@ export module WatermarkingTools {
 	}
 
 	// Decode a single paragraph
-	export function decodeParagraph(text : string): string[] {
+	export function decodeParagraph(text : string): string[]{
 		const paragraphs = text.split(NPC);
 
-		  const decodedParagraphs = paragraphs.reduce(function(result : string[], paragraph: string) {
-			
-			if (paragraph.length == 0) return result;
+		const decodedParagraphs = paragraphs.reduce(function (result : string[], paragraph : string) {
+			if (paragraph.length == 0) 
+				return result;
 			
 			// Initialize the output string
 			const outText = WatermarkingTools.decodeText(paragraph);
-			
-			if (outText.length == 0 || !outText.includes("1")) return result;
 
+			if (outText.length == 0 || !outText.includes("1")) 
+				return result;
+			
 			result.push(outText);
 
 			return result;
-		  }, []);
+		}, []);
 
 		return decodedParagraphs;
 	}
 
 	// Split text based on NPC and call decodeParagraph on all paragraphs
 	export function decodeText(text : string): string {
-		
 		// Initialize the output string
 		var outCode = "";
 
@@ -184,7 +184,6 @@ export module WatermarkingTools {
 			} else if (TableSpaces.includes(c)) {
 				outCode = outCode.concat(getSpaceCode(c));
 			}
-
 		}
 
 		return outCode;

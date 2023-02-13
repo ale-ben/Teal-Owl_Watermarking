@@ -56,6 +56,4 @@ describe("Testing text decoding", () => {
 			expect(WatermarkingTools.decodeText(encodedText[i])).toBe(payload);
 		}
 	});
-
 });
-
