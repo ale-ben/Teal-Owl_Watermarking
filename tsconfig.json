@@ -12,9 +12,4 @@
         "typeRoots": [ "node_modules/@types" ],
 		"moduleResolution": "node"
     },
-	"types": [
-        //(various types, e.g. jquery, core-js),
-        "chrome",
-		"node"
-    ]
 }
